@@ -1,202 +1,129 @@
+
+You said:
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Best Sis Ever 💜</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Best Sis Ever?</title>
+    <style>
+        body {
+            background-color: #f3e5f5; /* Soft Lavender */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow: hidden;
+        }
 
-<style>
-:root{
-    --bg-light:#f3e5f5;
-    --bg-dark:#1a1026;
-    --text-light:#4a148c;
-    --text-dark:#f3e5f5;
-}
+.container {
+            text-align: center;
+            padding: 20px;
+            z-index: 1;
+        }
 
-body{
-    margin:0;
-    height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    background:var(--bg-light);
-    font-family:'Segoe UI',sans-serif;
-    overflow:hidden;
-    transition:0.5s;
-}
+ .showering-hearts {
+            width: 200px;
+            height: auto;
+            border-radius: 20px;
+            margin-bottom: 20px;
+        }
 
-body.night{
-    background:var(--bg-dark);
-    color:var(--text-dark);
-}
+ h1 {
+            color: #4a148c; /* Deep Purple */
+            font-size: 2.2rem;
+            margin-bottom: 30px;
+        }
 
-.container{
-    text-align:center;
-    z-index:2;
-    padding:25px;
-}
+ .buttons {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
 
-h1{
-    font-size:2.6rem;
-    color:var(--text-light);
-    transition:0.5s;
-}
+ .yes-button {
+            background-color: #7b1fa2; /* Purple */
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 1.2rem;
+            font-weight: bold;
+            transition: all 0.2s ease-out;
+            box-shadow: 0 4px 15px rgba(123, 31, 162, 0.3);
+        }
 
-body.night h1{
-    color:var(--text-dark);
-}
+ .no-button {
+            background-color: #9e9e9e; /* Grey */
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
 
-.buttons{
-    display:flex;
-    gap:20px;
-    justify-content:center;
-    flex-wrap:wrap;
-}
-
-button{
-    border:none;
-    border-radius:50px;
-    padding:14px 28px;
-    font-size:1.3rem;
-    cursor:pointer;
-    font-weight:bold;
-    transition:0.3s;
-}
-
-.yes-button{
-    background:#7b1fa2;
-    color:white;
-    box-shadow:0 8px 20px rgba(123,31,162,0.4);
-}
-
-.no-button{
-    background:#9e9e9e;
-    color:white;
-}
-
-.hidden{display:none;}
-
-.popup{
-    position:fixed;
-    top:50%;
-    left:50%;
-    transform:translate(-50%,-50%) scale(0);
-    background:white;
-    padding:30px;
-    border-radius:20px;
-    font-size:2rem;
-    animation:pop 0.6s forwards;
-    z-index:5;
-}
-
-@keyframes pop{
-    to{transform:translate(-50%,-50%) scale(1);}
-}
-
-.heart,.flower{
-    position:fixed;
-    font-size:24px;
-    animation:fall 4s linear forwards;
-    z-index:1;
-}
-
-@keyframes fall{
-    from{top:-10%;opacity:1;}
-    to{top:110%;opacity:0;}
-}
-
-.toggle{
-    position:fixed;
-    top:15px;
-    right:15px;
-    background:#00000055;
-    color:white;
-    padding:10px 15px;
-    border-radius:30px;
-    cursor:pointer;
-    z-index:10;
-}
-</style>
+.hidden {
+            display: none;
+        }
+    </style>
 </head>
-
 <body>
 
-<div class="toggle" onclick="toggleNight()">🌙 Night</div>
-
-<audio id="bgm" loop>
-    <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_7b1c5d6fd8.mp3">
-</audio>
-
-<div id="question-view" class="container">
-    <h1>Want to resubscribe my brother subscription?? 💜</h1>
-    <div class="buttons">
-        <button class="yes-button" onclick="handleYes()">Of course! 🥰</button>
-        <button class="no-button" onclick="handleNo()">mmH... ?</button>
+ <div id="question-view" class="container">
+        <h1>Want to resubscribe  my brother subscription??</h1>
+        <div class="buttons">
+            <button class="yes-button" onclick="handleYesClick()">Of course! 🥰</button>
+            <button class="no-button" onclick="handleNoClick()">mmH... ?</button>
+        </div>
     </div>
-</div>
 
 <div id="success-view" class="container hidden">
-    <h1>Let me take refund 😹🤣</h1>
-    <p style="font-size:1.3rem;margin-top:15px;">
-        I know life gets competitive,<br>
-        but I will always be there,<br>
-        watching you and praising your efforts 💖
-    </p>
-</div>
+        <h1 style="color: #4a148c;"> Let me take refund 😹🤣
+        </h1>
+    </div>
 
-<script>
-let messageIndex=0;
-const messages=[
-    "mmH... ?",
-    "Are you really sure?",
-    "But I'm your favorite brother!",
-    "I'll share my snacks!",
-    "I'll help with chores? (maybe)",
-    "Don't be mean!",
-    "Please? I'll be really nice!",
-    "I'll tell Mom you're the best!",
-    "Fine, I'll eat all the pizza myself...",
-    "Just kidding! Say yes, sis! ✨"
-];
+ <script>
+        let messageIndex = 0;
+        const messages = [
+            "mmH... ?",
+            "Are you really sure?",
+            "But I'm your favorite brother!",
+            "I'll share my snacks!",
+            "I'll help with chores? (maybe)",
+            "Don't be mean!",
+            "Please? I'll be really nice!",
+            "I'll tell Mom you're the best!",
+            "Fine, I'll eat all the pizza myself...",
+            "Just kidding! Say yes, sis! ✨"
+        ];
 
-function handleNo(){
-    const noBtn=document.querySelector(".no-button");
-    const yesBtn=document.querySelector(".yes-button");
+        function handleNoClick() {
+            const noButton = document.querySelector(".no-button");
+            const yesButton = document.querySelector(".yes-button");
+            
+            noButton.textContent = messages[messageIndex];
+            messageIndex = (messageIndex + 1) % messages.length;
 
-    noBtn.textContent=messages[messageIndex];
-    messageIndex=(messageIndex+1)%messages.length;
+            // Make the 'Yes' button grow
+            const currentSize = parseFloat(window.getComputedStyle(yesButton).fontSize);
+            yesButton.style.fontSize = ${currentSize * 1.4}px;
+            
+            const currentPadding = parseFloat(window.getComputedStyle(yesButton).padding);
+            yesButton.style.padding = ${currentPadding * 1.1}px;
+        }
 
-    yesBtn.style.fontSize=
-        parseFloat(getComputedStyle(yesBtn).fontSize)*1.25+"px";
-}
-
-function handleYes(){
-    document.getElementById("question-view").classList.add("hidden");
-    document.getElementById("success-view").classList.remove("hidden");
-    document.getElementById("bgm").play();
-
-    const popup=document.createElement("div");
-    popup.className="popup";
-    popup.innerText="Correct Answer 💖✨";
-    document.body.appendChild(popup);
-
-    setInterval(shower,300);
-}
-
-function shower(){
-    const el=document.createElement("div");
-    el.className=Math.random()>0.5?"heart":"flower";
-    el.innerText=Math.random()>0.5?"💖":"🌸";
-    el.style.left=Math.random()*100+"vw";
-    el.style.fontSize=(20+Math.random()*30)+"px";
-    document.body.appendChild(el);
-    setTimeout(()=>el.remove(),4000);
-}
-
-function toggleNight(){
-    document.body.classList.toggle("night");
-}
-</script>
-
+        function handleYesClick() {
+            document.getElementById("question-view").classList.add("hidden");
+            document.getElementById("success-view").classList.remove("hidden");
+            document.body.style.backgroundColor = "#e1bee7"; // Slightly darker purple
+        }
+    </script>
 </body>
 </html>
